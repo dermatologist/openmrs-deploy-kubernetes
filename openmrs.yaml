@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openmrs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openmrs
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: openmrs
+    spec:
+      containers:
+      - image: openmrs/openmrs-reference-application-distro:2.8
+        name: openmrs
+        env:
+        - name: DB_HOST
+          value: mysql:3306
+        - name: DB_DATABASE
+          value: openmrs
+        - name: DB_USERNAME
+          value: root
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql
+              key: password
+        - name: DB_CREATE_TABLES
+          value: "true"
+        ports:
+        - containerPort: 8080
+          name: openmrs
+        volumeMounts:
+        - name: openmrs-modules-storage
+          mountPath: /usr/local/tomcat/.OpenMRS/modules
+        - name: openmrs-owa-storage
+          mountPath: /usr/local/tomcat/.OpenMRS/owa
+      volumes:
+      - name: openmrs-modules-storage
+        persistentVolumeClaim:
+          claimName: openmrs-modules-claim
+      - name: openmrs-owa-storage
+        persistentVolumeClaim:
+          claimName: openmrs-owa-claim
