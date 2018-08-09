@@ -3,21 +3,19 @@ kind: PersistentVolumeClaim
 metadata:
   name: openmrs-modules-claim
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: 100Gi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: openmrs-owa-claim
 spec:
-  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 10Mi
+      storage: 10Gi

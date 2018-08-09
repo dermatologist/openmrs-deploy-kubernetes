@@ -97,7 +97,8 @@ kubectl get svc -l app=openmrs
 ```
 kubectl delete service openmrs
 kubectl delete service mysql
-kubectl delete pvc openmrs-volumeclaim
+kubectl delete pvc openmrs-modules-claim
+kubectl delete pvc openmrs-owa-claim
 kubectl delete pvc mysql-volumeclaim
 ```
 
