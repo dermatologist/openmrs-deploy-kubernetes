@@ -18,6 +18,15 @@ spec:
         - image: mysql:5.6
           name: mysql
           env:
+            - name: MYSQL_USER
+              value: openmrs
+            - name: MYSQL_DATABASE
+              value: openmrs
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql
+                  key: password
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:

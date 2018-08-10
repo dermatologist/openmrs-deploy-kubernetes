@@ -19,11 +19,11 @@ spec:
         name: openmrs
         env:
         - name: DB_HOST
-          value: mysql:3306
+          value: mysql
         - name: DB_DATABASE
           value: openmrs
         - name: DB_USERNAME
-          value: root
+          value: openmrs
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
