@@ -17,7 +17,7 @@ spec:
         app: openmrs
     spec:
       containers:
-      - image: openmrs/openmrs-reference-application-distro:2.8
+      - image: openmrs/openmrs-reference-application-distro:2.6
         name: openmrs
         env:
         - name: DB_HOST
@@ -32,6 +32,8 @@ spec:
               name: mysql
               key: password
         - name: DB_CREATE_TABLES
+          value: "true"
+        - name: DB_AUTO_UPDATE
           value: "true"
         ports:
         - containerPort: 8080
