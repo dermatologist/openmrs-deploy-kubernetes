@@ -92,6 +92,12 @@ kubectl get svc -l app=openmrs
 <EXTERNAL IP>/openmrs
 ```
 
+* On Minikube, the LoadBalancer type makes the Service accessible through the minikube service command
+
+```
+minikube service openmrs
+```
+
 ### STEP 8. Clean Up
 
 ```
