@@ -18,3 +18,9 @@
 ## helm
 
 * Docs: https://helm.sh/docs/  [Read templates]
+
+## Access minikube remotely
+
+https://www.systemcodegeeks.com/devops/remote-access-to-minikube-with-kubectl/
+
+* portforward on virtualbox
